@@ -23,10 +23,9 @@ zh:
 
   login:
     header: "LogIn"
-    email: "Email"
-    password: "Password"
+    email: "电子邮件"
+    password: "密码"
     loginButton: "Login"
-    email: "Email"
     invalidLogin: "Invalid login details"
 
   registration:

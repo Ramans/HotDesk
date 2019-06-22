@@ -25,7 +25,3 @@ set :output, "#{RAILS_ROOT}/log/cron.log"
 every 1.day do
    rake "users:bookings_report"
 end
-
-every 5.minutes do
-    rake "users:bookings_report"
-end

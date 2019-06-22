@@ -6,5 +6,14 @@ module ApplicationHelper
             redirect_to posts_url
         end
     end
+
+    def format_date(date)
+    	if date.present?
+	        date.to_datetime.strftime("%d %b")
+	    else
+	      return ""
+	    end
+
+    end
     
 end

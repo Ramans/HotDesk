@@ -20,21 +20,20 @@
     <body>
 
         <div class="container py-5">
-
-            <% if @current_user.present? %>
-                <div class="text-right">
-                    <%= I18n.t('global.loggedIn') %>, <%= I18n.t('global.hi') %> <%= @current_user.name %>
-                    <%= link_to "#{I18n.t('global.logout')}", logout_url, :class => "btn btn-info" %>
-
-                    <%= select_tag :locale, options_for_select([["English", "en"], ["Chinese", "zh"]], params[:locale]), :class => "form-control", :id => "locale" %>
-
-                </div>
-            <% else %>
-                <div class="text-right">
-                    <%= link_to "#{I18n.t('global.login')}", login_url, :class => "btn btn-info" %>
-                    <%= link_to "#{I18n.t('global.register')}", new_user_url, :class => "btn btn-info" %>
-                </div>
-            <% end %>
+            <div class="margin-bottom">
+                <%= select_tag :locale, options_for_select([["English", "en"], ["Chinese", "zh"]], params[:locale]), :class => "form-control", :id => "locale" %>
+                <% if @current_user.present? %>
+                    <div class="text-right">
+                        <%= I18n.t('global.loggedIn') %>, <%= I18n.t('global.hi') %> <%= @current_user.name %>
+                        <%= link_to "#{I18n.t('global.logout')}", logout_url, :class => "btn btn-info" %>
+                    </div>
+                <% else %>
+                    <div class="text-right">
+                        <%= link_to "#{I18n.t('global.login')}", login_url, :class => "btn btn-info" %>
+                        <%= link_to "#{I18n.t('global.register')}", new_user_url, :class => "btn btn-info" %>
+                    </div>
+                <% end %>
+            </div>
 
             <div class="row">
                 <div class="col-md-12">
