@@ -8,6 +8,7 @@ Rails.application.routes.draw do
                 post "login"
                 get "logout"
                 get "cancel_seat"
+                get "admin_register"
             end
         end
 

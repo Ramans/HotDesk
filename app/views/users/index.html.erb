@@ -29,11 +29,16 @@
 							<%= format_date(user.from) %> - <%= format_date(user.to) %>
 						<% end %>
 					</td>
-					<td><%= link_to "#{t('index.view')}", user_path(user) %></td>
+					<td>
+						<%= link_to "#{t('index.view')}", user_path(user) %> 
+						<% if admin? and @current_user.id != user.id %>
+							/ <%= link_to "#{t('index.edit')}", edit_user_path(user) %> 
+							/ <%= link_to "#{t('index.destroy')}", user, method: :delete, data: { confirm: "Are you sure?" } %>
+						<% end %>
+					</td>
 				</tr>
 			<% end %>
 		</tbody>
-
 	</table>
         
 </div>

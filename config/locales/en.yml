@@ -83,6 +83,8 @@ en:
     from: "From"
     to: "To"
     view: "View"
+    edit: "Edit"
+    destroy: "Destroy"
 
   show:
     name: "Name"

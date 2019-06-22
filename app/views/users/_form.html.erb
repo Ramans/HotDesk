@@ -1,4 +1,7 @@
 <%= form_for @user, :id => "formLogin", :class => "form" do |f| %>
+    
+    <%= f.hidden_field :status, :value => "Active" %>
+    <%= f.hidden_field :user_type, :value => user_type %>
 
     <div class="form-group">
         <%= f.text_field :name, :placeholder => "#{t('registration.name')}", :class => "form-control form-control-lg rounded-0 text-center" %>
