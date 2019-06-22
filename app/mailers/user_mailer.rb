@@ -1,10 +1,10 @@
 class UserMailer < ApplicationMailer
 
-	default from: "ramans0810@gmail.com"
+	default from: "arudra.raman@gmail.com"
 
-	def bookings_report(users)
+	def bookings_report(users, admin_emails)
 	    @users = users
-	    mail(to: "arudra.raman@gmail.com", subject: 'Staff seat booking report')
+	    mail(to: admin_emails, subject: 'Staff seat booking report')
 	end
 
 end

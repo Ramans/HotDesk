@@ -52,7 +52,10 @@ class UsersController < ApplicationController
 	end
 
 	def show
-		@user = User.find(params[:id])
+		@user = User.find_by_id(params[:id])
+		if @user.blank?
+			render :file => "#{Rails.root}/public/404.html", :status => 404, :layout => true
+		end
 	end
 
 	def edit
@@ -67,7 +70,8 @@ class UsersController < ApplicationController
 	end
 
 	def cancel_seat
-		@user = User.find(@current_user.id)
+		@user = @current_user #User.find_by_id(@current_user.id)
+
 		@user.desk = nil
 		@user.from = nil
 		@user.to = nil
@@ -97,13 +101,14 @@ class UsersController < ApplicationController
 
 	def find_user
 		if admin?
-			@user = User.find(params[:id])
+			@user = User.find_by_id(params[:id])
 		else
 			if params[:id].to_i == @current_user.id
-				@user = User.find(@current_user.id)
-			else
-				render :file => "#{Rails.root}/public/404.html", :status => 404, :layout => true
+				@user = @current_user #User.find_by_id(@current_user.id)
 			end
+		end
+		if @user.blank?
+			render :file => "#{Rails.root}/public/404.html", :status => 404, :layout => true
 		end
 	end
 
