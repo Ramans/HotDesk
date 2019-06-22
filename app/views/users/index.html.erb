@@ -1,0 +1,40 @@
+<div class="col-md-12 mx-auto">
+
+	<div class="card-deck">
+		<% if @current_user.desk.present? %>
+			<%= link_to "Update Seat", edit_user_path(@current_user), :class => "btn btn-info " %>&nbsp;
+			<%= link_to "Cancel Seat", cancel_seat_users_url, :class => "btn btn-info" %>
+		<% else %>
+			<%= link_to "Book New Seat", edit_user_path(@current_user), :class => "btn btn-info" %>
+		<% end %>
+	</div>
+
+    <table class="table table-striped">
+    	<thead>
+			<tr>
+				<th scope="col">Name</th>
+				<th scope="col">Desk</th>
+				<th scope="col">From/To</th>
+				<th scope="col"></th>
+			</tr>
+		</thead>
+
+		<tbody>
+			<% @users.each do |user| %>
+				<tr>
+					<td><%= user.name %></td>
+					<td><%= user.desk %></td>
+					<td>
+						<% if user.from.present? and user.to.present? %>
+							<%= user.from %>/<%= user.to %>
+						<% end %>
+					</td>
+					<td><%= link_to "View", user_path(user) %></td>
+				</tr>
+			<% end %>
+		</tbody>
+
+	</table>
+        
+</div>
+           
