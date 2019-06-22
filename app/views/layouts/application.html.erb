@@ -23,13 +23,16 @@
 
             <% if @current_user.present? %>
                 <div class="text-right">
-                    Logged in, Hi <%= @current_user.name %>
-                    <%= link_to "Logout", logout_url, :class => "btn btn-info" %>
+                    <%= I18n.t('global.loggedIn') %>, <%= I18n.t('global.hi') %> <%= @current_user.name %>
+                    <%= link_to "#{I18n.t('global.logout')}", logout_url, :class => "btn btn-info" %>
+
+                    <%= select_tag :locale, options_for_select([["English", "en"], ["Chinese", "zh"]], params[:locale]), :class => "form-control", :id => "locale" %>
+
                 </div>
             <% else %>
                 <div class="text-right">
-                    <%= link_to "Login", login_url, :class => "btn btn-info" %>
-                    <%= link_to "Register", new_user_url, :class => "btn btn-info" %>
+                    <%= link_to "#{I18n.t('global.login')}", login_url, :class => "btn btn-info" %>
+                    <%= link_to "#{I18n.t('global.register')}", new_user_url, :class => "btn btn-info" %>
                 </div>
             <% end %>
 
@@ -46,3 +49,28 @@
     </body>
 
 </html>
+
+<script>
+
+    $(document).ready(function(){
+
+        $("#locale").change(function(){
+            var url = "<%= request.url %>";
+            var path = "<%= request.path %>";
+
+            var split_url = url.split("/<%= params[:locale] %>");
+            var value = $(this).val();
+            
+            if (split_url.length == 2){
+                var main_url = split_url[0]+"/"+value+""+split_url[1];
+            }else{
+                var split_url = url.split(path);
+                var main_url = split_url[0]+"/"+value+""+path;
+            }
+
+            window.location.replace(main_url);
+        });
+
+    });
+
+</script>

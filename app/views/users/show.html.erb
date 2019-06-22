@@ -4,21 +4,21 @@
 
 	    <table>
 			<tr>
-				<th scope="col">Name</th><td>: <%= @user.name %></td>
+				<th scope="col"><%= t('show.name') %></th><td>: <%= @user.name %></td>
 			</tr>
 			<tr>
-				<th scope="col">Email</th><td>: <%= @user.email %></td>
+				<th scope="col"><%= t('show.email') %></th><td>: <%= @user.email %></td>
 			</tr>
 			<tr>
-				<th scope="col">Desk</th><td>: <%= @user.desk %></td>
+				<th scope="col"><%= t('show.desk') %></th><td>: <%= @user.desk %></td>
 			</tr>
 			<tr>
-				<th scope="col">Date</th><td>: <%= @user.from %> - <%= @user.to %></td>
+				<th scope="col"><%= t('show.date') %></th><td>: <%= @user.from %> - <%= @user.to %></td>
 			</tr>
 		</table>
 	        
 	</div>
 
-	<div class="text-center"><%= link_to "Cancel", users_path, :class => "btn btn-info form-control btn-lg margin-bottom" %></div>
+	<div class="text-center"><%= link_to "#{t('show.cancel')}", users_path, :class => "btn btn-info form-control btn-lg margin-bottom" %></div>
 
 </div>

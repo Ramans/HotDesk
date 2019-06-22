@@ -2,25 +2,25 @@
 
     <div class="card rounded-0">
         <div class="card-header">
-            <h3 class="text-center mb-0">LogIn</h3>
+            <h3 class="text-center mb-0"><%= t('login.header') %></h3>
         </div>
 
         <div class="card-body text-center">
 
-            <%= form_tag login_path, :id => "formLogin", :class => "form" do %>
+            <%= form_tag login_path, :class => "form" do %>
                 <div class="form-group">
-                    <%= text_field_tag :email,"", :placeholder => "Email", :class => "form-control form-control-lg rounded-0 text-center" %>
+                    <%= text_field_tag :email,"", :placeholder => "#{t('login.email')}", :class => "form-control form-control-lg rounded-0 text-center" %>
                 </div>
 
                 <div class="form-group">
-                    <%= password_field_tag :password, "", :placeholder => "Password", :class => "form-control form-control-lg rounded-0 text-center" %>
+                    <%= password_field_tag :password, "", :placeholder => "#{t('login.password')}", :class => "form-control form-control-lg rounded-0 text-center" %>
                 </div>
 
                 <% if @user.present? and @user.errors.present? and  @user.errors[:login].present? %>
                 	<div class="error"><%= @user.errors[:login][0] %></div>
                 <% end %>
                 
-                <%= submit_tag "Login", :class => "btn btn-info form-control btn-lg margin-bottom" %>
+                <%= submit_tag "#{t('login.loginButton')}", :class => "btn btn-info form-control btn-lg margin-bottom" %>
             <% end %>
 
         </div>

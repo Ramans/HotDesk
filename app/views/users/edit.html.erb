@@ -2,7 +2,7 @@
 
     <div class="card rounded-0">
         <div class="card-header">
-            <h3 class="text-center mb-0">Book Seat</h3>
+            <h3 class="text-center mb-0"><%= t('edit.bookSeat') %></h3>
         </div>
 
         <div class="card-body text-center">
@@ -10,7 +10,7 @@
             <%= form_for @user, :class => "form" do |f| %>
 
                 <div class="form-group">
-                    <%= f.select :desk, options_for_select(staff_desks), {}, :class => "form-control form-control-lg rounded-0 text-center" %>
+                    <%= f.select :desk, options_for_select(staff_desks, @user.desk), {}, :class => "form-control form-control-lg rounded-0 text-center" %>
 
                     <% if @user.errors.present? and @user.errors['desk'].present? %>
                         <div class="error"><%= @user.errors['desk'][0] %></div>
@@ -18,7 +18,7 @@
                 </div>
 
                 <div class="form-group">
-                    <%= f.text_field :from, :placeholder => "From Date", :class => "datepicker form-control form-control-lg rounded-0 text-center" %>
+                    <%= f.text_field :from, :placeholder => "#{t('edit.fromDate')}", :class => "datepicker form-control form-control-lg rounded-0 text-center" %>
 
                     <% if @user.errors.present? and @user.errors['from'].present? %>
                         <div class="error"><%= @user.errors['from'][0] %></div>
@@ -26,15 +26,15 @@
                 </div>
 
                 <div class="form-group">
-                    <%= f.text_field :to, :placeholder => "To date", :class => "datepicker form-control form-control-lg rounded-0 text-center" %>
+                    <%= f.text_field :to, :placeholder => "#{t('edit.toDate')}", :class => "datepicker form-control form-control-lg rounded-0 text-center" %>
 
                     <% if @user.errors.present? and @user.errors['to'].present? %>
                         <div class="error"><%= @user.errors['to'][0] %></div>
                     <% end %>
                 </div>
 
-                <%= f.submit "Book", :class => "btn btn-info form-control btn-lg margin-bottom" %>
-                <%= link_to "Cancel", users_path, :class => "btn btn-info form-control btn-lg margin-bottom" %>
+                <%= f.submit "#{t('edit.book')}", :class => "btn btn-info form-control btn-lg margin-bottom" %>
+                <%= link_to "#{t('edit.cancel')}", users_path, :class => "btn btn-info form-control btn-lg margin-bottom" %>
                 
             <% end %>
 

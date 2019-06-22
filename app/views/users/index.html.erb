@@ -2,19 +2,19 @@
 
 	<div class="card-deck">
 		<% if @current_user.desk.present? %>
-			<%= link_to "Update Seat", edit_user_path(@current_user), :class => "btn btn-info " %>&nbsp;
-			<%= link_to "Cancel Seat", cancel_seat_users_url, :class => "btn btn-info" %>
+			<%= link_to "#{t('index.updateSeat')}", edit_user_path(@current_user), :class => "btn btn-info " %>&nbsp;
+			<%= link_to "#{t('index.cancelSeat')}", cancel_seat_users_url, :class => "btn btn-info" %>
 		<% else %>
-			<%= link_to "Book New Seat", edit_user_path(@current_user), :class => "btn btn-info" %>
+			<%= link_to "#{t('index.bookNewSeat')}", edit_user_path(@current_user), :class => "btn btn-info" %>
 		<% end %>
 	</div>
 
     <table class="table table-striped">
     	<thead>
 			<tr>
-				<th scope="col">Name</th>
-				<th scope="col">Desk</th>
-				<th scope="col">From/To</th>
+				<th scope="col"><%= t('index.name') %></th>
+				<th scope="col"><%= t('index.desk') %></th>
+				<th scope="col"><%= t('index.from') %>/<%= t('index.to') %></th>
 				<th scope="col"></th>
 			</tr>
 		</thead>
@@ -29,7 +29,7 @@
 							<%= user.from %>/<%= user.to %>
 						<% end %>
 					</td>
-					<td><%= link_to "View", user_path(user) %></td>
+					<td><%= link_to "#{t('index.view')}", user_path(user) %></td>
 				</tr>
 			<% end %>
 		</tbody>

@@ -31,7 +31,7 @@ class UsersController < ApplicationController
 					redirect_to users_url
 				else
 					@user = User.new
-					@user.errors.add(:login, "Invalid login details")
+					@user.errors.add(:login, "#{I18n.t('login.invalidLogin')}")
 				end
 			end
 		end
