@@ -22,11 +22,20 @@ class User < ApplicationRecord
 	validate :to_valid
 
 	before_create :encrypted_password
+	before_update :update_booking_date
 
 	private
 
 	def encrypted_password
 		self.password = Digest::MD5.hexdigest(self.password)
+	end
+
+	def update_booking_date
+		if self.desk.present?
+			self.booking_date = Time.now
+		else
+			self.booking_date = nil
+		end
 	end
 
 	def to_valid

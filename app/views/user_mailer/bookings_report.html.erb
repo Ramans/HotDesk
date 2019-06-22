@@ -1,0 +1,31 @@
+Hi,
+
+Today staff seat booking report
+
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th scope="col"><%= t('index.name') %></th>
+			<th scope="col"><%= t('index.email') %></th>
+			<th scope="col"><%= t('index.desk') %></th>
+			<th scope="col"><%= t('index.from') %>/<%= t('index.to') %></th>
+			<th scope="col"></th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<% @users.each do |user| %>
+			<tr>
+				<td><%= user.name %></td>
+				<td><%= user.email %></td>
+				<td><%= user.desk %></td>
+				<td>
+					<% if user.from.present? and user.to.present? %>
+						<%= user.from %>/<%= user.to %>
+					<% end %>
+				</td>
+			</tr>
+		<% end %>
+	</tbody>
+
+</table>
